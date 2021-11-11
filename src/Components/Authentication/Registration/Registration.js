@@ -1,22 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Footer from '../UserArea/Footer';
-import Header from '../UserArea/Header';
-import './Login.css'
+import Footer from '../../UserArea/Footer';
+import Header from '../../UserArea/Header';
+import './Registration.css';
 
-const Login = () => {
+const Registration = () => {
+
+    const [signupData, setSignupData] = useState({});
+
+    const handleOnChange = e => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newSignupData = { ...signupData };
+        newSignupData[field] = value;
+        setSignupData(newSignupData);
+    }
+
+    const handleSignUp = e => {
+        // if (signupData.password !== signupData.retypePassword) {
+        //     alert('Please Enter Correct Password');
+        //     return
+        // }
+        e.preventDefault();
+    }
     return (
-
-
         <>
             <Header />
-            <div className="loginBg w-full h-screen">
+
+            <div className="leading-loose w-full">
                 <div className="container flex items-center justify-center flex-1 h-full mx-auto">
-                    <div className="px-2 md:px-0 w-full max-w-lg">
+                    <div className="px-2 md:px-0 w-full max-w-lg my-10 md:my-24">
 
                         <div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
                             <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
-                                Login To Your Account
+                                Create An Account
                             </div>
                             <div className="flex gap-4 item-center">
                                 <button type="button" className="py-2 px-4 flex justify-center items-center  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
@@ -35,7 +52,7 @@ const Login = () => {
                                 </button>
                             </div>
                             <div className="mt-8">
-                                <form action="#" autoComplete="off">
+                                <form onChange={handleSignUp}>
                                     <div className="flex flex-col mb-2">
                                         <div className="flex relative ">
                                             <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
@@ -44,7 +61,22 @@ const Login = () => {
                                                     </path>
                                                 </svg>
                                             </span>
-                                            <input type="text" id="sign-in-email" className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Your email" />
+                                            <input
+                                                name='email'
+                                                onChange={handleOnChange}
+                                                type="email" className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Your email" />
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col mb-2">
+                                        <div className="flex relative ">
+                                            <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+                                                <svg width="15" height="15" fill="currentColor" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1376 768q40 0 68 28t28 68v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h32v-320q0-185 131.5-316.5t316.5-131.5 316.5 131.5 131.5 316.5q0 26-19 45t-45 19h-64q-26 0-45-19t-19-45q0-106-75-181t-181-75-181 75-75 181v320h736z">
+                                                    </path>
+                                                </svg>
+                                            </span>
+                                            <input
+                                                name='password' onChange={handleOnChange} type="password" className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Your password" />
                                         </div>
                                     </div>
                                     <div className="flex flex-col mb-6">
@@ -55,27 +87,24 @@ const Login = () => {
                                                     </path>
                                                 </svg>
                                             </span>
-                                            <input type="password" id="sign-in-email" className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Your password" />
+                                            <input
+                                                name='retypePassword' onChange={handleOnChange} type="password" className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Retype Your password" />
                                         </div>
                                     </div>
-                                    <div className="flex items-center mb-6 -mt-4">
-                                        <div className="flex ml-auto">
-                                            <a href="#" className="inline-flex text-xs font-thin text-gray-500 sm:text-sm dark:text-gray-100 hover:text-gray-700 dark:hover:text-white">
-                                                Forgot Your Password?
-                                            </a>
-                                        </div>
-                                    </div>
+
                                     <div className="flex w-full">
-                                        <button type="submit" className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
-                                            Login
+                                        <button
+
+                                            type="submit" className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                                            Sign Up
                                         </button>
                                     </div>
                                 </form>
                             </div>
                             <div className="flex items-center justify-center mt-6">
-                                <Link to="/registration" className="inline-flex items-center text-base text-center text-gray-500 hover:text-gray-700 dark:text-gray-100 dark:hover:text-white">
+                                <Link to="/login" className="inline-flex items-center text-base text-center text-gray-500 hover:text-gray-700 dark:text-gray-100 dark:hover:text-white">
                                     <h6 className="ml-2 text-purple-600">
-                                        You don&#x27;t have an account?
+                                        Already have an account?
                                     </h6>
                                 </Link>
                             </div>
@@ -86,9 +115,7 @@ const Login = () => {
             </div>
             <Footer />
         </>
-
-
     );
 };
 
-export default Login;
+export default Registration;

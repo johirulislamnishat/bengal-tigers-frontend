@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
-import Login from './Components/Login/Login';
-import Registration from './Components/Registration/Registration';
+import Login from './Components/Authentication/Login/Login';
+import Registration from './Components/Authentication/Registration/Registration';
 import Home from './Components/UserArea/Home';
+import DashboardHome from './Components/DashboardArea/DashboardHome';
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
 
           <Route path='/registration'>
             <Registration />
+          </Route>
+          <Route path='/dashboard'>
+            <DashboardHome />
           </Route>
 
         </Switch>

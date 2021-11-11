@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ManageOrders = () => {
+const Pay = () => {
     return (
         <div>
-
+            This Is Pay
         </div>
     );
 };
 
-export default ManageOrders;
+export default Pay;
