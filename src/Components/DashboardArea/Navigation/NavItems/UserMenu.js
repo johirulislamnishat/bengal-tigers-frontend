@@ -1,22 +1,26 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../Authentication/Hooks/useAuth';
 import Transition from './Transition';
 
 const UserMenu = () => {
+
+
+    const { user, logOut } = useAuth();
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const trigger = useRef(null);
     const dropdown = useRef(null);
 
-    // close on click outside
-    useEffect(() => {
-        const clickHandler = ({ target }) => {
-            if (!dropdownOpen || dropdown.current.contains(target) || trigger.current.contains(target)) return;
-            setDropdownOpen(false);
-        };
-        document.addEventListener('click', clickHandler);
-        return () => document.removeEventListener('click', clickHandler);
-    });
+    // // close on click outside
+    // useEffect(() => {
+    //     const clickHandler = ({ target }) => {
+    //         if (!dropdownOpen || dropdown.current.contains(target) || trigger.current.contains(target)) return;
+    //         setDropdownOpen(false);
+    //     };
+    //     document.addEventListener('click', clickHandler);
+    //     return () => document.removeEventListener('click', clickHandler);
+    // });
 
     // close if the esc key is pressed
     useEffect(() => {
@@ -36,13 +40,14 @@ const UserMenu = () => {
                 onClick={() => setDropdownOpen(!dropdownOpen)}
                 aria-expanded={dropdownOpen}
             >
-                <img className="w-8 h-8 rounded-full" src={'UserAvatar'} width="32" height="32" alt="User" />
-                <div className="flex items-center truncate">
-                    <span className="truncate ml-2 text-sm font-medium group-hover:text-gray-800">Acme Inc.</span>
-                    <svg className="w-3 h-3 flex-shrink-0 ml-1 fill-current text-gray-400" viewBox="0 0 12 12">
+                <div className="flex items-center truncate">Hello!
+                    <span className="truncate w-16 mx-2 text-sm font-medium group-hover:text-gray-800"> {user?.displayName}</span>
+                    {/* <svg className="w-3 h-3 flex-shrink-0 ml-1 fill-current text-gray-400" viewBox="0 0 12 12">
                         <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
-                    </svg>
+                    </svg> */}
                 </div>
+                <img className="w-8 h-8 rounded-full" src={user?.photoURL} width="32" height="32" alt="User" />
+
             </button>
 
             <Transition
@@ -75,13 +80,16 @@ const UserMenu = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link
-                                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                                to="/"
-                                onClick={() => setDropdownOpen(!dropdownOpen)}
-                            >
-                                Sign Out
-                            </Link>
+                            <button onClick={logOut}>
+                                <Link
+                                    className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
+                                    to="/"
+                                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                                >
+                                    Sign Out
+                                </Link>
+                            </button>
+
                         </li>
                     </ul>
                 </div>

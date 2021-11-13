@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../../UserArea/Footer';
 import Header from '../../UserArea/Header';
+import useAuth from '../Hooks/useAuth';
 import './Registration.css';
 
 const Registration = () => {
 
     const [signupData, setSignupData] = useState({});
+    const { authError, signUpUsingEmail, isLoading } = useAuth();
 
     const handleOnChange = e => {
         const field = e.target.name;
@@ -17,10 +19,13 @@ const Registration = () => {
     }
 
     const handleSignUp = e => {
-        // if (signupData.password !== signupData.retypePassword) {
-        //     alert('Please Enter Correct Password');
-        //     return
-        // }
+        if (signupData.password !== signupData.retypePassword) {
+            alert('Please Enter Correct Password');
+            return
+        }
+        signUpUsingEmail(signupData.email, signupData.password)
+
+        alert('Registration Success!!!')
         e.preventDefault();
     }
     return (
@@ -52,7 +57,11 @@ const Registration = () => {
                                 </button>
                             </div>
                             <div className="mt-8">
-                                <form onChange={handleSignUp}>
+                                {isLoading ? <div className="flex justify-center items-center">
+                                    <div
+                                        className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"
+                                    ></div>
+                                </div> : <form onSubmit={handleSignUp}>
                                     <div className="flex flex-col mb-2">
                                         <div className="flex relative ">
                                             <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
@@ -64,7 +73,7 @@ const Registration = () => {
                                             <input
                                                 name='email'
                                                 onChange={handleOnChange}
-                                                type="email" className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Your email" />
+                                                type="email" className="lowercase rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Your email" />
                                         </div>
                                     </div>
                                     <div className="flex flex-col mb-2">
@@ -100,6 +109,13 @@ const Registration = () => {
                                         </button>
                                     </div>
                                 </form>
+                                }
+
+                                {/* error  */}
+
+                                {
+                                    authError && <div>{authError}</div>
+                                }
                             </div>
                             <div className="flex items-center justify-center mt-6">
                                 <Link to="/login" className="inline-flex items-center text-base text-center text-gray-500 hover:text-gray-700 dark:text-gray-100 dark:hover:text-white">

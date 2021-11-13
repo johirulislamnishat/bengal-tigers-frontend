@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import Footer from '../../UserArea/Footer';
 import Header from '../../UserArea/Header';
+import useAuth from '../Hooks/useAuth';
 import './Login.css'
 
 const Login = () => {
 
+
     const [loginData, setLoginData] = useState({});
+    const { authError, user, isLoading, signInUsingEmail, signInUsingGoogle } = useAuth();
+
+
+    const location = useLocation();
+    const history = useHistory();
+    const redirect_uri = location?.state?.from || '/home';
 
     const handleOnChange = e => {
         const field = e.target.name;
@@ -17,8 +25,16 @@ const Login = () => {
     }
 
     const handleLogin = e => {
-        alert('Ok')
+        signInUsingEmail(loginData.email, loginData.password, location, history)
+        alert('Login Success!!!')
         e.preventDefault();
+    }
+
+    const handleGoogleLogin = () => {
+        signInUsingGoogle()
+            .then(result => {
+                history.push(redirect_uri);
+            })
     }
 
     return (
@@ -40,7 +56,7 @@ const Login = () => {
                                     </svg>
                                     Facebook
                                 </button>
-                                <button type="button" className="py-2 px-4 flex justify-center items-center  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                                <button onClick={handleGoogleLogin} type="button" className="py-2 px-4 flex justify-center items-center  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                                     <svg width="20" height="20" fill="currentColor" className="mr-2" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M896 786h725q12 67 12 128 0 217-91 387.5t-259.5 266.5-386.5 96q-157 0-299-60.5t-245-163.5-163.5-245-60.5-299 60.5-299 163.5-245 245-163.5 299-60.5q300 0 515 201l-209 201q-123-119-306-119-129 0-238.5 65t-173.5 176.5-64 243.5 64 243.5 173.5 176.5 238.5 65q87 0 160-24t120-60 82-82 51.5-87 22.5-78h-436v-264z">
                                         </path>
@@ -61,19 +77,18 @@ const Login = () => {
                                             <input
                                                 name='email'
                                                 onChange={handleOnChange}
-                                                type="text" id="sign-in-email" className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Your email" />
+                                                type="text" className="lowercase rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Your email" />
                                         </div>
                                     </div>
                                     <div className="flex flex-col mb-6">
-                                        <div className="flex  ">
+                                        <div className="flex">
                                             <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
                                                 <svg width="15" height="15" fill="currentColor" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M1376 768q40 0 68 28t28 68v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h32v-320q0-185 131.5-316.5t316.5-131.5 316.5 131.5 131.5 316.5q0 26-19 45t-45 19h-64q-26 0-45-19t-19-45q0-106-75-181t-181-75-181 75-75 181v320h736z">
                                                     </path>
                                                 </svg>
                                             </span>
-                                            <input name='password'
-                                                onChange={handleOnChange} type="password" id="sign-in-email" className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Your password" />
+                                            <input name='password' onChange={handleOnChange} type="password" id="sign-in-email" className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Your password" />
                                         </div>
                                     </div>
                                     <div className="flex items-center mb-6 -mt-4">
@@ -87,6 +102,12 @@ const Login = () => {
                                         Login
                                     </button>
                                 </form>
+
+                                {/* error  */}
+
+                                {
+                                    authError && <div>{authError}</div>
+                                }
                             </div>
                             <div className="flex items-center justify-center mt-6">
                                 <Link to="/registration" className="inline-flex items-center text-base text-center text-gray-500 hover:text-gray-700 dark:text-gray-100 dark:hover:text-white">

@@ -9,9 +9,11 @@ import Pay from './Pay';
 import MakeAdmin from './MakeAdmin';
 import Orders from './Orders';
 import Review from './Review';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
 const DashboardHome = () => {
-
+  let { path } = useRouteMatch();
+  // sidebar 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <div className="flex h-screen overflow-hidden">
@@ -31,25 +33,38 @@ const DashboardHome = () => {
             <WelcomeBanner />
 
             {/* Dashboard actions */}
-            <AddProducts />
-            <ManageOrders />
-            <Pay />
-            <ManageProducts />
-            <MakeAdmin />
-            <Orders />
-            <Review />
 
-            {/* Cards */}
-            <div className="grid grid-cols-12 gap-6">
+            <Switch>
+              {/* <Route exact path={path}>
+                <Pay />
+              </Route> */}
 
-              {/* Card (Customers) */}
-              <ManageOrders />
+              <Route path={`${path}/pay`}>
+                <Pay />
+              </Route>
 
-            </div>
+              <Route path={`${path}/orders`}>
+                <Orders />
+              </Route>
 
+              <Route path={`${path}/review`}>
+                <Review />
+              </Route>
+              <Route path={`${path}/make-admin`}>
+                <MakeAdmin />
+              </Route>
+              <Route path={`${path}/manage-orders`}>
+                <ManageOrders />
+              </Route>
+              <Route path={`${path}/add-products`}>
+                <AddProducts />
+              </Route>
+              <Route path={`${path}/manage-products`}>
+                <ManageProducts />
+              </Route>
+            </Switch>
           </div>
         </main>
-
       </div>
     </div>
   );

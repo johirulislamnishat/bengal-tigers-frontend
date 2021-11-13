@@ -1,8 +1,10 @@
 import React from 'react';
+import useAuth from '../Authentication/Hooks/useAuth';
 
 const WelcomeBanner = () => {
-    return (
-        <div className="relative bg-indigo-200 p-4 sm:p-6 rounded-sm overflow-hidden mb-8">
+  const { user } = useAuth();
+  return (
+    <div className="relative bg-indigo-200 p-4 sm:p-6 rounded-sm overflow-hidden mb-8">
 
       {/* Background illustration */}
       <div className="absolute right-0 top-0 -mt-4 mr-16 pointer-events-none hidden xl:block" aria-hidden="true">
@@ -48,12 +50,12 @@ const WelcomeBanner = () => {
 
       {/* Content */}
       <div className="relative">
-        <h1 className="text-2xl md:text-3xl text-gray-800 font-bold mb-1">Good afternoon, Acme Inc. 👋</h1>
+        <h1 className="text-2xl md:text-3xl text-gray-800 font-bold mb-1">Good afternoon, {user.email} 👌</h1>
         <p>Here is what’s happening with your projects today:</p>
       </div>
 
     </div>
-    );
+  );
 };
 
 export default WelcomeBanner;
