@@ -17,7 +17,7 @@ const Testimonial = () => {
         fetch(url)
             .then(res => res.json())
             // .then(data => console.log(data))
-            .then(data => setreviews(data.slice(0, 2)))
+            .then(data => setreviews(data))
     }, [])
 
     // slider 
@@ -58,7 +58,7 @@ const Testimonial = () => {
 
     return (
 
-        <div>
+        <div className='max-w-6xl mx-auto grid col-span-3'>
 
             <p className="text-4xl font-bold text-gray-800 mb-4">
                 Testimonial

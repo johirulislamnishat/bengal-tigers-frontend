@@ -1,12 +1,37 @@
+import axios from 'axios';
 import React from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 const MakeAdmin = () => {
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const [email, setEmail] = useState('');
+    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
+    const [success, setSuccess] = useState(false);
 
     const onSubmit = data => {
-        console.log(data)
+        // const user = { email };
+        // setEmail(data)
+        // console.log(data);
+        // console.log(data)
+
+        axios.put('http://localhost:5000/users/admin', data)
+            .then(res => {
+                // console.log(res.data);
+                if (res.data.upsertCount) {
+                    // console.log(data);
+                    setSuccess(true);
+
+                }
+            })
+
+        // .then(res => {
+        //     if (res.data.insertedId) {
+        //         alert('Success');
+        //         reset();
+        //     }
+        // })
+
     };
 
     return (

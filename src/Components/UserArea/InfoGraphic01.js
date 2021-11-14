@@ -3,7 +3,7 @@ import React from 'react';
 const InfoGraphic01 = () => {
     return (
 
-        <div className="max-w-screen-xl p-4 bg-white dark:bg-gray-800 mx-auto px-4 sm:px-6 lg:px-8 relative py-26 lg:mt-20">
+        <div className="max-w-6xl p-4 bg-white dark:bg-gray-800 mx-auto px-4 sm:px-6 lg:px-8 relative py-26 lg:mt-20">
             <div className="relative">
                 <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
                     <div className="lg:col-start-2 lg:max-w-2xl ml-auto">
@@ -74,12 +74,12 @@ const InfoGraphic01 = () => {
                     <div className="mt-10 lg:-mx-4 relative relative-20 lg:mt-0 lg:col-start-1">
                         <div className="relative space-y-4">
                             <div className="flex items-end justify-center lg:justify-start space-x-4">
-                                <img className="rounded-lg shadow-lg w-32 md:w-56" width="200" src="/images/object/8.jpg" alt="1" />
-                                <img className="rounded-lg shadow-lg w-40 md:w-64" width="260" src="/images/landscape/4.jpg" alt="2" />
+                                <img className="rounded-lg shadow-lg w-32 md:w-56" width="200" src="https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGNhcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="1" />
+                                <img className="rounded-lg shadow-lg w-40 md:w-64" width="260" src="https://images.unsplash.com/photo-1494905998402-395d579af36f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGNhcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="2" />
                             </div>
                             <div className="flex items-start justify-center lg:justify-start space-x-4 ml-12">
-                                <img className="rounded-lg shadow-lg w-24 md:w-40" width="170" src="/images/landscape/3.jpg" alt="3" />
-                                <img className="rounded-lg shadow-lg w-32 md:w-56" width="200" src="/images/object/9.jpg" alt="4" />
+                                <img className="rounded-lg shadow-lg w-24 md:w-40" width="170" src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="3" />
+                                <img className="rounded-lg shadow-lg w-32 md:w-56" width="200" src="https://images.unsplash.com/photo-1550355291-bbee04a92027?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGNhcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="4" />
                             </div>
                         </div>
                     </div>

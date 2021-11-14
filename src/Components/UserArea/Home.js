@@ -21,9 +21,9 @@ const Home = () => {
             <ProductHome />
             <InfoGraphic01 />
             <Subscribe />
-            <Teams />
+            {/* <Teams /> */}
             <Testimonial />
-            <Blogs />
+            {/* <Blogs /> */}
             <Footer />
         </>
     );

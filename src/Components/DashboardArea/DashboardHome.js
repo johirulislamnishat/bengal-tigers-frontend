@@ -10,9 +10,11 @@ import MakeAdmin from './MakeAdmin';
 import Orders from './Orders';
 import Review from './Review';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import useAuth from '../Authentication/Hooks/useAuth';
 
 const DashboardHome = () => {
   let { path } = useRouteMatch();
+  const { admin } = useAuth();
   // sidebar 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
@@ -50,18 +52,23 @@ const DashboardHome = () => {
               <Route path={`${path}/review`}>
                 <Review />
               </Route>
-              <Route path={`${path}/make-admin`}>
-                <MakeAdmin />
-              </Route>
-              <Route path={`${path}/manage-orders`}>
-                <ManageOrders />
-              </Route>
-              <Route path={`${path}/add-products`}>
-                <AddProducts />
-              </Route>
-              <Route path={`${path}/manage-products`}>
-                <ManageProducts />
-              </Route>
+
+              {
+                admin && <>
+                  <Route path={`${path}/make-admin`}>
+                    <MakeAdmin />
+                  </Route>
+                  <Route path={`${path}/manage-orders`}>
+                    <ManageOrders />
+                  </Route>
+                  <Route path={`${path}/add-products`}>
+                    <AddProducts />
+                  </Route>
+                  <Route path={`${path}/manage-products`}>
+                    <ManageProducts />
+                  </Route>
+                </>
+              }
             </Switch>
           </div>
         </main>

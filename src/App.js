@@ -8,6 +8,7 @@ import AuthProvider from './Components/Authentication/Context/AuthProvider';
 import PrivateRoute from './Components/Authentication/PrivateRoute/PrivateRoute';
 import ProductDetails from './Components/UserArea/ProductDetails';
 import Products from './Components/UserArea/Products';
+import ContactUs from './Components/UserArea/ContactUs';
 
 function App() {
   return (
@@ -33,6 +34,10 @@ function App() {
 
             <Route path='/products'>
               <Products />
+            </Route>
+
+            <Route path='/contact'>
+              <ContactUs />
             </Route>
 
             <Route path='/car-details/:id'>

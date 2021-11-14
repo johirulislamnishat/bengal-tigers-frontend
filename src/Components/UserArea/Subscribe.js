@@ -3,8 +3,8 @@ import React from 'react';
 const Subscribe = () => {
     return (
 
-        <div className="bg-white dark:bg-gray-800">
-            <div className="relative px-4 py-6 overflow-hidden sm:px-6 sm:py-8 lg:p-12 xl:p-16">
+        <div className="bg-indigo-50 dark:bg-gray-800">
+            <div className="max-w-6xl mx-auto relative px-4 py-16 overflow-hidden sm:px-6 sm:py-10 my-10 lg:p-12 xl:p-16">
                 <h2 className="text-2xl font-semibold font-display text-black dark:text-white sm:text-3xl">
                     We&#x27;ve got more coming...
                 </h2>
@@ -24,11 +24,8 @@ const Subscribe = () => {
                     </div>
                 </form>
                 <div className="hidden lg:block absolute inset-y-0 lg:left-2/3 xl:left-1/2 right-0">
-                    <picture>
-                        <source srcSet="/images/object/5.webp" type="image/webp" />
-                        <source srcSet="/images/object/5.png" />
-                        <img className="w-1/2 object-cover maw-w-44 mx-auto" src="/images/object/5.png" alt="shopping item" />
-                    </picture>
+
+                    <img className="w-1/2 object-cover maw-w-44 mx-auto rounded-md" src="https://images.unsplash.com/photo-1493238792000-8113da705763?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="shopping item" />
                 </div>
             </div>
         </div>

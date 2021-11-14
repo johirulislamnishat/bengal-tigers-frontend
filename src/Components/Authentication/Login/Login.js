@@ -9,8 +9,10 @@ const Login = () => {
 
 
     const [loginData, setLoginData] = useState({});
-    const { authError, user, isLoading, signInUsingEmail, signInUsingGoogle } = useAuth();
+    const { authError, isLoading, signInUsingEmail, signInUsingGoogle, saveUser } = useAuth();
 
+    // session storage 
+    const [user, setUser] = useState({});
 
     const location = useLocation();
     const history = useHistory();
@@ -34,6 +36,13 @@ const Login = () => {
         signInUsingGoogle()
             .then(result => {
                 history.push(redirect_uri);
+
+                const user = result.user;
+                saveUser(user.email, user.displayName, 'PUT');
+                //session storage
+                setUser(result.user);
+                sessionStorage.setItem("email", result.user.email);
+                // console.log(result.user);
             })
     }
 
