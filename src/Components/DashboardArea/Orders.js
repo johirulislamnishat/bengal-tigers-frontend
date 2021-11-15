@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Rating from 'react-rating';
-import useFirebase from '../Authentication/Hooks/useFirebase';
+// import useFirebase from '../Authentication/Hooks/useFirebase';
 import useAuth from '../Authentication/Hooks/useAuth'
 
 const Orders = () => {
@@ -10,11 +10,11 @@ const Orders = () => {
 
     const [cancelOrder, setcancelOrder] = useState([]);
     const email = sessionStorage.getItem('email');
-    const { user } = useFirebase();
+    // const { user } = useFirebase();
     const { orders, setOrders } = useAuth();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/bookingOrders/${email}`)
+        fetch(`https://dry-island-56194.herokuapp.com/bookingOrders/${email}`)
             .then(res => res.json())
             // .then(data => console.log(data))
             .then(data => setOrders(data))
@@ -24,7 +24,7 @@ const Orders = () => {
     const handleCancelBooking = id => {
         const proceed = window.confirm('Are you sure you want to delete?');
         if (proceed) {
-            const url = `http://localhost:5000/deleteOrders/${id}`;
+            const url = `https://dry-island-56194.herokuapp.com/deleteOrders/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

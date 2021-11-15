@@ -14,7 +14,7 @@ const ProductDetails = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        const url = (`http://localhost:5000/carsInfo/${id}`);
+        const url = (`https://dry-island-56194.herokuapp.com/carsInfo/${id}`);
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -34,7 +34,7 @@ const ProductDetails = () => {
         // console.log(email);
 
 
-        axios.post('http://localhost:5000/bookingOrders', data)
+        axios.post('https://dry-island-56194.herokuapp.com/bookingOrders', data)
             .then(res => {
 
                 // console.log(res);

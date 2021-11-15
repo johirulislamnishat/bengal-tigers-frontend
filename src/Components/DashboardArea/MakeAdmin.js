@@ -15,7 +15,7 @@ const MakeAdmin = () => {
         // console.log(data);
         // console.log(data)
 
-        axios.put('http://localhost:5000/users/admin', data)
+        axios.put('https://dry-island-56194.herokuapp.com/users/admin', data)
             .then(res => {
                 // console.log(res.data);
                 if (res.data.upsertCount) {

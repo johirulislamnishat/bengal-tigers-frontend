@@ -9,7 +9,7 @@ const Products = () => {
     const [cars, setCars] = useState([]);
 
     useEffect(() => {
-        const url = ('http://localhost:5000/carsInfo')
+        const url = ('https://dry-island-56194.herokuapp.com/carsInfo')
         fetch(url)
             .then(res => res.json())
             // .then(data => console.log(data))

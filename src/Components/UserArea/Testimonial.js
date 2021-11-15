@@ -3,9 +3,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 import Rating from 'react-rating';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-regular-svg-icons';
-
 
 const Testimonial = () => {
 
@@ -32,7 +29,7 @@ const Testimonial = () => {
     const [reviews, setreviews] = useState([]);
 
     useEffect(() => {
-        const url = ('http://localhost:5000/shopReviews')
+        const url = ('https://dry-island-56194.herokuapp.com/shopReviews')
         fetch(url)
             .then(res => res.json())
             // .then(data => console.log(data))

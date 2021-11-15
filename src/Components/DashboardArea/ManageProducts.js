@@ -8,7 +8,7 @@ const ManageProducts = () => {
     const [deleteProduct, setDeleteProduct] = useState([]);
 
     useEffect(() => {
-        const url = ('http://localhost:5000/carsInfo')
+        const url = ('https://dry-island-56194.herokuapp.com/carsInfo')
         fetch(url)
             .then(res => res.json())
             // .then(data => console.log(data))
@@ -19,7 +19,7 @@ const ManageProducts = () => {
     const handleDeleteProduct = id => {
         const proceed = window.confirm('Are you sure you want to delete?');
         if (proceed) {
-            const url = `http://localhost:5000/deleteProduct/${id}`;
+            const url = `https://dry-island-56194.herokuapp.com/deleteProduct/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

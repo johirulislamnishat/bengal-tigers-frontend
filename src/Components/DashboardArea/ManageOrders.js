@@ -6,7 +6,7 @@ const ManageOrders = () => {
   const [cancelOrder, setcancelOrder] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/bookingOrders/`)
+    fetch(`https://dry-island-56194.herokuapp.com/bookingOrders/`)
       .then(res => res.json())
       // .then(data => console.log(data))
       .then(data => setOrders(data))
@@ -16,7 +16,7 @@ const ManageOrders = () => {
   const handleCancelOrder = id => {
     const proceed = window.confirm('Are you sure you want to delete?');
     if (proceed) {
-      const url = `http://localhost:5000/deleteOrders/${id}`;
+      const url = `https://dry-island-56194.herokuapp.com/deleteOrders/${id}`;
       fetch(url, {
         method: 'DELETE'
       })
