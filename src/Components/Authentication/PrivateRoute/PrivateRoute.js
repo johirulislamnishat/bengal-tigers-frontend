@@ -6,7 +6,13 @@ const PrivateRoute = ({ children, ...rest }) => {
     const { user, isLoading } = useAuth();
 
     //reload handling
-    if (isLoading) { return 'All Ok' }
+    if (isLoading) {
+        return <div className="flex justify-center items-center">
+            <div
+                className="animate-spin rounded-full h-20 w-20 p-10 border-b-2 border-gray-900"
+            ></div>
+        </div>
+    }
 
     return (
         <Route

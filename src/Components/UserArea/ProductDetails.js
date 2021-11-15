@@ -53,6 +53,7 @@ const ProductDetails = () => {
 
             <div className='flex justify-between max-w-6xl mx-auto gap-16'>
                 <div key={car._id} className="overflow-hidden shadow-lg rounded-lg  my-10 md:my-24">
+
                     <div>
                         <img src={img} className="max-h-80 w-full object-cover" alt={productName} />
                         <div className="bg-white dark:bg-gray-800 w-full p-4">
@@ -172,6 +173,7 @@ const ProductDetails = () => {
                         </div>
 
                     </div>
+
                 </div>
             </div>
 
