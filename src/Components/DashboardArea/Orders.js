@@ -2,16 +2,21 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Rating from 'react-rating';
+import useFirebase from '../Authentication/Hooks/useFirebase';
+import useAuth from '../Authentication/Hooks/useAuth'
 
 const Orders = () => {
 
-    const [orders, setOrders] = useState([]);
+
     const [cancelOrder, setcancelOrder] = useState([]);
     const email = sessionStorage.getItem('email');
+    const { user } = useFirebase();
+    const { orders, setOrders } = useAuth();
 
     useEffect(() => {
         fetch(`http://localhost:5000/bookingOrders/${email}`)
             .then(res => res.json())
+            // .then(data => console.log(data))
             .then(data => setOrders(data))
     })
 
@@ -92,6 +97,10 @@ const Orders = () => {
             </div>
         </>
     );
+
+    return {
+        orders
+    }
 };
 
 export default Orders;

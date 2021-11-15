@@ -4,11 +4,20 @@ import Footer from '../../UserArea/Footer';
 import Header from '../../UserArea/Header';
 import useAuth from '../Hooks/useAuth';
 import './Registration.css';
+import { useLocation, useHistory } from 'react-router-dom';
 
 const Registration = () => {
 
+    // session storage 
+    const [user, setUser] = useState({});
+
     const [signupData, setSignupData] = useState({});
     const { authError, signUpUsingEmail, isLoading } = useAuth();
+
+    // redirect 
+    const location = useLocation();
+    const history = useHistory();
+    const redirect_uri = location?.state?.from || '/home';
 
     const handleOnChange = e => {
         const field = e.target.name;
@@ -23,7 +32,13 @@ const Registration = () => {
             alert('Please Enter Correct Password');
             return
         }
-        signUpUsingEmail(signupData.email, signupData.password)
+        signUpUsingEmail(signupData.email, signupData.password, location, history)
+
+        //redirect 
+        history.push(redirect_uri);
+        // console.log(signupData.email);
+        setUser(signupData.email);
+        sessionStorage.setItem("email", signupData.email);
 
         alert('Registration Success!!!')
         e.preventDefault();

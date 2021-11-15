@@ -6,7 +6,7 @@ const PrivateRoute = ({ children, ...rest }) => {
     const { user, isLoading } = useAuth();
 
     //reload handling
-    if (isLoading) { return }
+    if (isLoading) { return 'All Ok' }
 
     return (
         <Route

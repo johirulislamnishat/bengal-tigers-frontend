@@ -9,7 +9,7 @@ const Sidebar = ({
 
   // nested route 
   let { url } = useRouteMatch();
-  const { admin } = useAuth();
+  const { orders, admin } = useAuth();
 
   // const location = useLocation();
   // const { pathname } = location;
@@ -104,8 +104,6 @@ const Sidebar = ({
               </NavLink>
             </li>
 
-            {/* User Only Dashboard Menu */}
-
 
             {/* Menu For Admin Only  */}
 
@@ -170,6 +168,8 @@ const Sidebar = ({
                 </li>
 
               </> : <>
+
+                {/* User Only Dashboard Menu */}
                 {/* Pay */}
                 <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 'bg-gray-900'}`}>
                   <NavLink to={`${url}/pay`} className={`block text-gray-200 hover:text-white transition duration-150 'hover:text-gray-200'}`}>
@@ -197,7 +197,7 @@ const Sidebar = ({
                       </div>
                       {/* Badge */}
                       <div className="flex flex-shrink-0 ml-2">
-                        <span className="inline-flex items-center justify-center h-5 text-xs font-medium text-white bg-indigo-500 px-2 rounded-sm">4</span>
+                        <span className="inline-flex items-center justify-center h-5 text-xs font-medium text-white bg-indigo-500 px-2 rounded-sm">{orders.length}</span>
                       </div>
                     </div>
                   </NavLink>

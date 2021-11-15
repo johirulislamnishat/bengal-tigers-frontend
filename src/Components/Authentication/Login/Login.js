@@ -28,17 +28,28 @@ const Login = () => {
 
     const handleLogin = e => {
         signInUsingEmail(loginData.email, loginData.password, location, history)
+
+        //redirect
+        history.push(redirect_uri);
+        // console.log(loginData.email);
+        //session storage
+        setUser(loginData.email);
+        sessionStorage.setItem("email", loginData.email);
+
         alert('Login Success!!!')
         e.preventDefault();
     }
 
     const handleGoogleLogin = () => {
-        signInUsingGoogle()
+        signInUsingGoogle(location, history)
             .then(result => {
+
+                //redirect
                 history.push(redirect_uri);
 
                 const user = result.user;
                 saveUser(user.email, user.displayName, 'PUT');
+
                 //session storage
                 setUser(result.user);
                 sessionStorage.setItem("email", result.user.email);

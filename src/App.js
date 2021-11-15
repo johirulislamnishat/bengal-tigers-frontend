@@ -9,6 +9,7 @@ import PrivateRoute from './Components/Authentication/PrivateRoute/PrivateRoute'
 import ProductDetails from './Components/UserArea/ProductDetails';
 import Products from './Components/UserArea/Products';
 import ContactUs from './Components/UserArea/ContactUs';
+import NotFound from './Components/UserArea/NotFound';
 
 function App() {
   return (
@@ -40,14 +41,17 @@ function App() {
               <ContactUs />
             </Route>
 
-            <Route path='/car-details/:id'>
+            <PrivateRoute path='/car-details/:id'>
               <ProductDetails />
-            </Route>
+            </PrivateRoute>
 
             <PrivateRoute path='/dashboard'>
               <DashboardHome />
             </PrivateRoute>
 
+            <Route exact path='/*'>
+              <NotFound />
+            </Route>
           </Switch>
         </Router>
       </AuthProvider>
