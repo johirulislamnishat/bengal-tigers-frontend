@@ -20,6 +20,32 @@ const Testimonial = () => {
         slidesToShow: 3,
         slidesToScroll: 1,
         initialSlide: 0,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
         //   prevArrow: <SlickArrowLeft />,
         // nextArrow: <SlickArrowRight />,
     };
@@ -76,7 +102,7 @@ const Testimonial = () => {
 
         <>
 
-            <div className="max-w-6xl mx-auto my-10">
+            <div className="mx-auto container px-6 md:px-0 mb-10 md:mb-20">
                 <p className="text-4xl font-bold text-gray-800 mb-4">
                     Testimonial
                 </p>
@@ -107,7 +133,7 @@ const Testimonial = () => {
                                                     <span className="text-gray-600 dark:text-gray-200 font-bold">{review.yourName}
                                                     </span>
                                                     <span className="text-gray-500 dark:text-gray-300  ml-2 text-sm">
-                                                        {'review.duration'} months ago
+                                                        {review.duration} months ago
                                                     </span>
                                                 </p>
 

@@ -3,7 +3,7 @@ import React from 'react';
 const Specialitis = () => {
     return (
 
-        <div className="mb-10 md:mb-20 sm:flex flex-wrap justify-center items-center text-center gap-8">
+        <div className="mx-auto container px-6 md:px-0 mb-10 md:mb-20 sm:flex flex-wrap justify-center items-center text-center gap-8">
             <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 bg-white mt-6  shadow-lg rounded-lg dark:bg-gray-800">
                 <div className="flex-shrink-0">
                     <div className="flex items-center mx-auto justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">

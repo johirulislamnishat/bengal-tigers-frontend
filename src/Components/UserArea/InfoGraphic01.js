@@ -3,7 +3,7 @@ import React from 'react';
 const InfoGraphic01 = () => {
     return (
 
-        <div className="max-w-6xl p-4 bg-white dark:bg-gray-800 mx-auto px-4 sm:px-6 lg:px-8 relative py-26 lg:mt-20">
+        <div className="mx-auto container mb-16 bg-white dark:bg-gray-800 px-4 sm:px-6 lg:px-8 relative py-26 lg:mt-20">
             <div className="relative">
                 <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
                     <div className="lg:col-start-2 lg:max-w-2xl ml-auto">

@@ -17,8 +17,8 @@ const ProductHome = () => {
     }, [])
 
     return (
-        <div className="w-full bg-white">
-            <div className='max-w-6xl mx-auto'>
+        <div className="bg-white">
+            <div className='mx-auto container px-6 md:px-0 mb-16'>
                 <div className="header flex items-end justify-between mb-12">
                     <div className="title">
                         <p className="text-4xl font-bold text-gray-800 mb-4">
@@ -29,7 +29,7 @@ const ProductHome = () => {
 
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
                     {
                         cars.map(car => (

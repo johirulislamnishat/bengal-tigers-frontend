@@ -51,10 +51,10 @@ const ProductDetails = () => {
         <>
             <Header />
 
-            <div className='flex justify-between max-w-6xl mx-auto gap-16'>
+            <div className='grid md:grid-cols-2 mx-auto container px-6 md:px-0 gap-16'>
                 <div key={car._id} className="overflow-hidden shadow-lg rounded-lg  my-10 md:my-24">
 
-                    <div>
+                    <div className='grid col-span-1'>
                         <img src={img} className="max-h-80 w-full object-cover" alt={productName} />
                         <div className="bg-white dark:bg-gray-800 w-full p-4">
                             <div className='flex justify-between items-center'>
@@ -102,8 +102,8 @@ const ProductDetails = () => {
                     </div>
                 </div>
 
-                <div>
-                    <div className="px-2 md:px-0 my-10 md:my-24 w-full max-w-lg">
+                <div className='grid col-span-1'>
+                    <div className="px-2 md:px-0 my-10 md:my-24 w-full">
 
                         <div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
                             <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">

@@ -4,7 +4,7 @@ const Subscribe = () => {
     return (
 
         <div className="bg-indigo-50 dark:bg-gray-800">
-            <div className="max-w-6xl mx-auto relative px-4 py-16 overflow-hidden sm:px-6 sm:py-10 my-10 lg:p-12 xl:p-16">
+            <div className="mx-auto container px-6 md:px-0 relative py-16 overflow-hidden sm:py-10 my-10 lg:p-12 xl:p-16">
                 <h2 className="text-2xl font-semibold font-display text-black dark:text-white sm:text-3xl">
                     We&#x27;ve got more coming...
                 </h2>
